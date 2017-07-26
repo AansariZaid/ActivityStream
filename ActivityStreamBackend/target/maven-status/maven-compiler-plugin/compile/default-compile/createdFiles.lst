@@ -1,0 +1,5 @@
+com\stackroute\activitystream\model\User.class
+com\stackroute\activitystream\config\EmailConfig.class
+com\stackroute\activitystream\dao\UserDAOImpl.class
+com\stackroute\activitystream\config\DBConfig.class
+com\stackroute\activitystream\dao\UserDAO.class
