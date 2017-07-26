@@ -44,6 +44,8 @@ public class UserTest {
 
 	@Test
 	public void registerTest() {
+		
+		
 		user.setPhoneNumber("9022484348");
 		user.setEmailid("ansari.zaid1@");
 		user.setFirstName("Ansari1");
