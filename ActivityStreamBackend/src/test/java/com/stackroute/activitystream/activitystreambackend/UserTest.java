@@ -2,13 +2,9 @@ package com.stackroute.activitystream.activitystreambackend;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-import java.util.Set;
-
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import javax.validation.ConstraintViolation;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -44,14 +40,13 @@ public class UserTest {
 
 	@Test
 	public void registerTest() {
-		
-		
 		user.setPhoneNumber("9022484348");
 		user.setEmailid("ansari.zaid1@");
 		user.setFirstName("Ansari1");
 		user.setLastName("Ansari");
 		user.setPassword("zaid@123");
 		user.setStatus("A");
+		// Added Hibernate Validation here
 		/*Set<ConstraintViolation<User>> cv = validator.validate(user);
 		if(cv.size()!=0)
 			System.out.println(cv.iterator().next().getMessage());*/
