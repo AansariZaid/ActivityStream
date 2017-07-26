@@ -28,11 +28,9 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		try {
 			sessionFactory.getCurrentSession().save(user);
-			log.debug("User registered Sucessfully");
 			return true;
 		} catch (Exception e) {
-			log.debug(e.toString());
-			log.debug("User Registration Failed");
+			//log.debug("User Registration Failed");
 			return false;
 		}
 	}
@@ -53,13 +51,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	public Boolean Update(User user) {
-		
 		try
 		{
 			sessionFactory.getCurrentSession().update(user);
 			return true;
 		}catch (Exception e) {
-			
 			return false;
 		}
 	}

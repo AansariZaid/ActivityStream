@@ -20,64 +20,41 @@ public class UserController {
 
 	@Autowired
 	UserDAO userDAO;
+	
+	@Autowired
+	HttpSession session;
 
-	@RequestMapping(value = "/insertUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<User> insertUser(@RequestBody User user) {
 		try {
-			User newUser = userDAO.register(user);
-			return new ResponseEntity<>(newUser, HttpStatus.OK);
+			Boolean status = userDAO.register(user);
+			user.setStatusMessage("User Registered Sucessfully");
+			return new ResponseEntity<>(user, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			user.setStatusMessage("User Registration Failed");
+			return new ResponseEntity<>(user, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<User> validateUser(@RequestBody User user, HttpSession sesssion) {
+	public ResponseEntity<User> validateUser(@RequestBody User user) {
 		try {
 			User validUser = userDAO.validate(user);
-			sesssion.setAttribute("currentUser", validUser);
+			session.setAttribute("currentUser", validUser);
 			return new ResponseEntity<User>(validUser, HttpStatus.OK);
-
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(user, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	@RequestMapping(value = "/logout",method = RequestMethod.DELETE)
-	public ResponseEntity<?> logoutUser(HttpSession session)
-	{
+
+	@RequestMapping(value = "/logout", method = RequestMethod.DELETE)
+	public ResponseEntity<?> logoutUser() {
 		User user = (User) session.getAttribute("currentUser");
-		if(user != null)
-		{
+		if (user != null) {
 			session.invalidate();
 			return new ResponseEntity<Void>(HttpStatus.OK);
-		}else
-		{
+		} else {
 			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
-		}
-	}
-	@RequestMapping(value = "/fetchAllUsers" , method = RequestMethod.GET)
-	public ResponseEntity<List<User>> fetchAllUser()
-	{
-		List<User> Allusers = userDAO.fetchAllUser();
-		if(Allusers != null)
-		{
-			return new ResponseEntity<List<User>>(Allusers,HttpStatus.OK);
-		}else
-		{
-			return new ResponseEntity<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
-	@RequestMapping(value = "/fetchUser", method = RequestMethod.GET)
-	public ResponseEntity<?> fetchUser(HttpSession session)
-	{
-		User user = (User) session.getAttribute("currentUser");
-		if(user != null)
-		{
-			user = userDAO.fetchUserById(user.getUId());
-			return new ResponseEntity<User>(user,HttpStatus.OK);
-		}else
-		{
-			return new ResponseEntity<User>(HttpStatus.UNAUTHORIZED);
 		}
 	}
 }

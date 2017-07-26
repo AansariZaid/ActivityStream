@@ -1,5 +1,6 @@
-D:\DT VERSION 3\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\dao\UserDAO.java
-D:\DT VERSION 3\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\dao\UserDAOImpl.java
-D:\DT VERSION 3\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\config\EmailConfig.java
-D:\DT VERSION 3\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\config\DBConfig.java
-D:\DT VERSION 3\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\model\User.java
+C:\Users\mruser\git\ActivityStream\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\config\DBConfig.java
+C:\Users\mruser\git\ActivityStream\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\dao\UserDAO.java
+C:\Users\mruser\git\ActivityStream\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\dao\UserDAOImpl.java
+C:\Users\mruser\git\ActivityStream\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\config\EmailConfig.java
+C:\Users\mruser\git\ActivityStream\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\model\BaseDomain.java
+C:\Users\mruser\git\ActivityStream\ActivityStreamBackend\src\main\java\com\stackroute\activitystream\model\User.java

@@ -3,6 +3,7 @@ package com.stackroute.activitystream.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -11,33 +12,38 @@ import org.springframework.stereotype.Component;
 
 @Entity
 @Component
-public class User {
+public class User extends BaseDomain {
 
 	@Id
 	@Email
 	private String emailid;
 	
-	
+	@NotNull(message = "Status Cannot be Null")
+	@NotBlank(message = "Status Cannot be Blank")
+	@NotEmpty(message = "Status Cannot be Empty")
 	private String status;
-	@NotNull
-	@NotBlank
-	@NotEmpty
+	
+	@NotNull(message = "First Name Cannot be Null")
+	@NotBlank(message = "First Name Cannot be Blank")
+	@NotEmpty(message = "First Name Cannot be Empty")
 	private String firstName;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
+	@NotNull(message = "Last Name Cannot be Null")
+	@NotBlank(message = "Last Name Cannot be Blank")
+	@NotEmpty(message = "Last Name Cannot be Empty")
 	private String lastName;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
+	@NotNull(message = "Password Cannot be Null")
+	@NotBlank(message = "Password Cannot be Blank")
+	@NotEmpty(message = "Password Cannot be Empty")
 	private String password;
 	
-	@NotNull
-	@NotBlank
-	@NotEmpty
+	@NotNull(message = "Contact Number Cannot be Null")
+	@NotBlank(message = "Contact Number Cannot be Blank")
+	@NotEmpty(message = "Contact Number Cannot be Empty")
+	@Pattern(regexp = "^\\d{10}")
 	private String phoneNumber;
+	
 	
 	public String getFirstName() {
 		return firstName;
