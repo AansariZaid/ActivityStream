@@ -37,6 +37,8 @@ public class UserTest {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
+	
+	
 
 	@Test
 	public void registerTest() {
