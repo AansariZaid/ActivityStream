@@ -27,7 +27,7 @@ public class UserController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<User> insertUser(@RequestBody User user) {
 		try {
-			Boolean status = userDAO.register(user);
+			userDAO.register(user);
 			user.setStatusMessage("User Registered Sucessfully");
 			return new ResponseEntity<>(user, HttpStatus.OK);
 		} catch (Exception e) {
