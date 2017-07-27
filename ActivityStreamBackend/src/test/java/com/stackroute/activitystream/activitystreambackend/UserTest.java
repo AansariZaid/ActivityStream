@@ -37,10 +37,8 @@ public class UserTest {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 	}
-	
-	
 
-	@Test
+	//@Test
 	public void registerTest() {
 		user.setPhoneNumber("9022484348");
 		user.setEmailid("ansari.zaid1@");
@@ -49,9 +47,10 @@ public class UserTest {
 		user.setPassword("zaid@123");
 		user.setStatus("A");
 		// Added Hibernate Validation here
-		/*Set<ConstraintViolation<User>> cv = validator.validate(user);
-		if(cv.size()!=0)
-			System.out.println(cv.iterator().next().getMessage());*/
+		/*
+		 * Set<ConstraintViolation<User>> cv = validator.validate(user);
+		 * if(cv.size()!=0) System.out.println(cv.iterator().next().getMessage());
+		 */
 		assertEquals("User Registered Sucessfully", true, userDAO.register(user));
 	}
 
@@ -72,6 +71,12 @@ public class UserTest {
 		user.setPassword("zaid@123");
 		assertEquals("User Validated", User.class, userDAO.validate(user).getClass());
 
+	}
+
+	@Test
+	public void deleteTest() {
+		user.setEmailid("ansari.zaid1@niit.com");
+		assertEquals("User Deleted ", true, userDAO.delete(user.getEmailid()));
 	}
 
 }

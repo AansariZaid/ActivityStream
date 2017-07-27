@@ -60,4 +60,27 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 
+	public Boolean delete(String emailid) {
+		
+		try
+		{
+			User updateUser = getUser(emailid);
+			updateUser.setStatus("N");
+			sessionFactory.getCurrentSession().update(updateUser.getEmailid(),updateUser);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
+	}
+
+	private User getUser(String emailid) {
+		
+		try {
+			User user = (User) sessionFactory.getCurrentSession().get(User.class, emailid);
+			return user;
+		}catch (Exception e) {
+			return null;
+		}
+	}
+
 }
