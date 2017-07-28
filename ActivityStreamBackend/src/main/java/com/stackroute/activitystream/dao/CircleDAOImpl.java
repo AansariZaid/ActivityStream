@@ -1,5 +1,6 @@
 package com.stackroute.activitystream.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -26,6 +27,8 @@ public class CircleDAOImpl implements CircleDAO {
 	public Boolean createCicrcle(Circle circle) {
 
 		try {
+			circle.setCreationDate(new Date());
+			circle.setCircleStatus("A");
 			sessionFactory.getCurrentSession().persist(circle);
 			return true;
 		} catch (Exception e) {
@@ -36,7 +39,7 @@ public class CircleDAOImpl implements CircleDAO {
 
 	public Boolean updateCircle(Circle circle) {
 		try {
-
+			
 			sessionFactory.getCurrentSession().update(circle);
 			return true;
 

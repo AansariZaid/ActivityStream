@@ -43,17 +43,15 @@ public class CircleTest {
 		circle  = context.getBean(Circle.class);
 	}
 
-	//@Test
+	@Test
 	public void createCircleTest() {
 		//circle.setCircleid(4);
 		circle.setCircleName("Circle10");
 		circle.setDescription("this is first Circle");
 		circle.setCircleOwner("zaid3891@gmail.com");
-		circle.setCreationDate(new Date());
-		circle.setCircleStatus("A");
 		assertEquals("Circle Created " ,true,circleDAO.createCicrcle(circle));		
 	}
-	
+/*	
 	@Test
 	public void updateCircleTest()
 	{
@@ -99,5 +97,5 @@ public class CircleTest {
 		System.out.println(circle);
 	}
 	
-	
+*/	
 }

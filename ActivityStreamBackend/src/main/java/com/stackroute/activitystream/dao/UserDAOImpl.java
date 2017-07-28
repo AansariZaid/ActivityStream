@@ -15,7 +15,7 @@ import com.stackroute.activitystream.model.User;
 @Transactional
 public class UserDAOImpl implements UserDAO {
 
-	Logger log = LoggerFactory.getLogger(UserDAOImpl.class);
+	//Logger log = LoggerFactory.getLogger(UserDAOImpl.class);
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -30,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
 			sessionFactory.getCurrentSession().save(user);
 			return true;
 		} catch (Exception e) {
-			//log.debug("User Registration Failed");
+			// log.debug("User Registration Failed");
 			return false;
 		}
 	}
@@ -42,43 +42,42 @@ public class UserDAOImpl implements UserDAO {
 			query.setParameter(0, user.getEmailid());
 			query.setParameter(1, user.getPassword());
 			user = (User) query.uniqueResult();
-			log.debug("User :: " + user.getFirstName()+user.getLastName() + " is a Valid User");
+			// log.debug("User :: " + user.getFirstName()+user.getLastName() + " is a Valid
+			// User");
 			return user;
 		} catch (Exception e) {
-			log.debug("Invalid User Account");
+			// log.debug("Invalid User Account");
 			return null;
 		}
 	}
-	
+
 	public Boolean Update(User user) {
-		try
-		{
+		try {
 			sessionFactory.getCurrentSession().update(user);
 			return true;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	public Boolean delete(String emailid) {
-		
-		try
-		{
+
+		try {
 			User updateUser = getUser(emailid);
 			updateUser.setStatus("N");
-			sessionFactory.getCurrentSession().update(updateUser.getEmailid(),updateUser);
+			sessionFactory.getCurrentSession().update(updateUser.getEmailid(), updateUser);
 			return true;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}
 
 	private User getUser(String emailid) {
-		
+
 		try {
 			User user = (User) sessionFactory.getCurrentSession().get(User.class, emailid);
 			return user;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
