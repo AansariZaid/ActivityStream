@@ -51,7 +51,7 @@ public class DBConfig {
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
-		//properties.put("hibernate.lazy", "false");
+		properties.put("hibernate.connection.autocommit", "true");
 		return properties;
 	}
 

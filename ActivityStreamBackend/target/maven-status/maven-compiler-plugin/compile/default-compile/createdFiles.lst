@@ -1,6 +1,12 @@
 com\stackroute\activitystream\model\User.class
 com\stackroute\activitystream\config\EmailConfig.class
+com\stackroute\activitystream\dao\SubscribeDAO.class
+com\stackroute\activitystream\model\SubscribeCircle.class
+com\stackroute\activitystream\config\DBConfig.class
+com\stackroute\activitystream\dao\SubscribeDAOImpl.class
+com\stackroute\activitystream\dao\CircleDAO.class
 com\stackroute\activitystream\model\BaseDomain.class
 com\stackroute\activitystream\dao\UserDAOImpl.class
-com\stackroute\activitystream\config\DBConfig.class
 com\stackroute\activitystream\dao\UserDAO.class
+com\stackroute\activitystream\dao\CircleDAOImpl.class
+com\stackroute\activitystream\model\Circle.class

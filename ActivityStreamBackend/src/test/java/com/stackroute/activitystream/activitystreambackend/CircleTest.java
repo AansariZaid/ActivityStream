@@ -23,7 +23,7 @@ public class CircleTest {
 	private static AnnotationConfigApplicationContext context;
 
 	@Autowired
-	private static Circle circle;
+	private Circle circle;
 
 	@Autowired
 	private static CircleDAO circleDAO;
@@ -33,32 +33,39 @@ public class CircleTest {
 		context = new AnnotationConfigApplicationContext();
 		context.scan("com.stackroute.activitystream");
 		context.refresh();
-		circle = context.getBean(Circle.class);
+//		circle = context.getBean(Circle.class);
 		circleDAO = (CircleDAO) context.getBean("circleDAO");
+	}
+	
+	@Before
+	public void setUp()
+	{
+		circle  = context.getBean(Circle.class);
 	}
 
 	//@Test
 	public void createCircleTest() {
-		Circle circle = new Circle();
-		circle.setCircleName("Circle1");
+		//circle.setCircleid(4);
+		circle.setCircleName("Circle10");
 		circle.setDescription("this is first Circle");
 		circle.setCircleOwner("zaid3891@gmail.com");
 		circle.setCreationDate(new Date());
-		assertEquals("Circle Crreatedn " ,true,circleDAO.createCicrcle(circle));		
+		circle.setCircleStatus("A");
+		assertEquals("Circle Created " ,true,circleDAO.createCicrcle(circle));		
 	}
 	
 	@Test
 	public void updateCircleTest()
 	{
 		circle = circleDAO.getCircleById(1);
-		circle.setCircleName("MyCircle");
+		circle.setCircleName("basd");
 		assertEquals("Circle Updated",true, circleDAO.updateCircle(circle));
 	}
 	
-	//@Test
+//	@Test
 	public void deleteCircleTest()
 	{
-		assertEquals("Circle Deleted",true,circleDAO.deleteCircle(2));
+		assertEquals("Circle Deleted",true,circleDAO.deleteCircle(4));
 		
 	}
 	
@@ -67,14 +74,14 @@ public class CircleTest {
 	{
 		circle = circleDAO.getCircleById(1);
 		assertNotNull(circle);
-		assertEquals("Circle Retived Correctly","MyCircle", circle.getCircleName());
+		assertEquals("Circle Retived Correctly","abcd", circle.getCircleName());
 		display(circle);
 	}
 	
 	@Test
 	public void getCircleByName()
 	{
-		circle = circleDAO.getCircleByName("MyCircle");
+		circle = circleDAO.getCircleByName("abcd");
 		assertNotNull(circle);
 		display(circle);
 	}
@@ -91,7 +98,6 @@ public class CircleTest {
 	{
 		System.out.println(circle);
 	}
-	
 	
 	
 }

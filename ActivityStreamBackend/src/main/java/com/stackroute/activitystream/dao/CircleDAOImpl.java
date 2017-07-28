@@ -26,7 +26,7 @@ public class CircleDAOImpl implements CircleDAO {
 	public Boolean createCicrcle(Circle circle) {
 
 		try {
-			sessionFactory.getCurrentSession().save(circle);
+			sessionFactory.getCurrentSession().persist(circle);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,8 +36,10 @@ public class CircleDAOImpl implements CircleDAO {
 
 	public Boolean updateCircle(Circle circle) {
 		try {
+
 			sessionFactory.getCurrentSession().update(circle);
 			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -47,8 +49,13 @@ public class CircleDAOImpl implements CircleDAO {
 	public Boolean deleteCircle(int circleId) {
 		try {
 			Circle circle = getCircleById(circleId);
-			sessionFactory.getCurrentSession().delete(circle);
-			return true;
+			if (circle != null) {
+				circle.setCircleStatus("N");
+				sessionFactory.getCurrentSession().update(circle);
+				return true;
+			} else {
+				return false;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;

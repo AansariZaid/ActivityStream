@@ -1,4 +1,4 @@
-package com.stackroute.activitystream.activitystreambackend;
+package com.stackroute.activitystream.model;
 
 import java.util.Date;
 

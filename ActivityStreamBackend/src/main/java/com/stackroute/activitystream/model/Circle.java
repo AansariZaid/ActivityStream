@@ -23,9 +23,9 @@ public class Circle {
 	@NotNull
 	String circleOwner;
 	
-	@NotNull
 	Date creationDate;	
 
+	String circleStatus;
 	
 
 	public String getCircleOwner() {
@@ -72,6 +72,14 @@ public class Circle {
 	public String toString() {
 		return "Circle [Circleid=" + Circleid + ", circleName=" + circleName + ", Description=" + Description
 				+ ", circleOwner=" + circleOwner + ", creationDate=" + creationDate + "]";
+	}
+
+	public String getCircleStatus() {
+		return circleStatus;
+	}
+
+	public void setCircleStatus(String circleStatus) {
+		this.circleStatus = circleStatus;
 	}
 	
 	
