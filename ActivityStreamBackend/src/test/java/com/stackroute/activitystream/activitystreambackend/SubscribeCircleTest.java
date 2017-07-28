@@ -25,7 +25,7 @@ public class SubscribeCircleTest {
 		subscribeDAO = (SubscribeDAO) context.getBean("subscribeDAO");
 	}
 
-	@Test
+//	@Test
 	public void subscribeTest() {
 		assertEquals(true, subscribeDAO.subscribeCircle(1, "zaid3891@gmail.com"));
 	}
